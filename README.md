@@ -1,25 +1,6 @@
-# README
+[ ![Codeship Status for eewilcox/SoleMate](https://codeship.com/projects/badf67a0-bf2e-0134-ed2b-0ef15c5d34cb/status?branch=master)](https://codeship.com/projects/196544)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+![Code Climate](https://codeclimate.com/github/eewilcox/Solemate.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# SoleMate
+![Coverage Status](https://coveralls.io/repos/eewilcox/Solemate/badge.png)
