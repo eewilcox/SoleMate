@@ -3,4 +3,4 @@
 
 ![Code Climate](https://codeclimate.com/github/eewilcox/Solemate.png)
 
-![Coverage Status](https://coveralls.io/repos/eewilcox/Solemate/badge.png)
+[![Coverage Status](https://coveralls.io/repos/github/eewilcox/SoleMate/badge.svg?branch=master)](https://coveralls.io/github/eewilcox/SoleMate?branch=master)
