@@ -8,6 +8,12 @@ require "rails_helper"
 
 feature "visitors can add shoes" do
   scenario "visitor adds new shoe successfully" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Sign In'
 
     visit new_shoe_path
     expect(page).to have_content "New Shoe Form"
@@ -28,6 +34,13 @@ feature "visitors can add shoes" do
   end
 
   scenario "visitor does not provide proper information for a shoe" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Sign In'
+    
     visit new_shoe_path
 
     click_button "Add Shoe"

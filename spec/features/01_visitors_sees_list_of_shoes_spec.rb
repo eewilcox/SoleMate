@@ -4,7 +4,8 @@ require 'rails_helper'
 
 feature "visitor sees a list of shoes" do
   scenario "sees a list of shoes" do
-    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks")
+    user = FactoryGirl.create(:user)
+    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks", user_id: user.id)
 
     visit shoes_path
 
@@ -17,7 +18,8 @@ feature "visitor sees a list of shoes" do
   end
 
   scenario "clicks link and is taken to show page for given shoe" do
-    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks")
+    user = FactoryGirl.create(:user)
+    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks", user_id: user.id)
 
     visit root_path
     click_link "Adidas Kobe 2"
