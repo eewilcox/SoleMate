@@ -1,6 +1,8 @@
+<%=link_to "<button>Add New Shoe</button>".html_safe, new_shoe_path %>
+
 <% @shoes.each do |shoe| %>
   <div>
-    <p><%= shoe.model %> <%= shoe.version %> <%= shoe.brand %> </p>
+    <p><%= link_to "#{shoe.brand} #{shoe.model} #{shoe.version}", shoe %> </p>
 
     <%= image_tag(shoe.picture) %>
   </div>

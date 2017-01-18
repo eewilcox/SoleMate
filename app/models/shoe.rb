@@ -1,4 +1,5 @@
 class Shoe < ApplicationRecord
+
   validates :model, presence: true
   validates :version, presence: true
   validates :brand, presence: true
