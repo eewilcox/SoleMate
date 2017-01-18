@@ -14,6 +14,7 @@ class ShoesController < ApplicationController
 
   def create
     @shoe = Shoe.new(shoe_params)
+    @shoe.user = current_user
     if @shoe.save
       flash[:notice] =  "Shoe added successfully"
       redirect_to shoe_path(@shoe)
