@@ -21,6 +21,14 @@
       </ul>
     </nav>
 
+    <% if notice.is_a?(Array) %>
+      <% notice.each do |this_notice| %>
+        <p class="notice"><%= this_notice %></p>
+      <% end %>
+    <%elsif notice %>
+      <p class="notice"> <%= notice %></p>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

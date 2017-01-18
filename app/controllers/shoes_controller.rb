@@ -10,7 +10,6 @@ class ShoesController < ApplicationController
 
   def new
     @shoe = Shoe.new
-    @errors = @shoe.errors
   end
 
   def create
@@ -19,7 +18,7 @@ class ShoesController < ApplicationController
       flash[:notice] =  "Shoe added successfully"
       redirect_to shoe_path(@shoe)
     else
-      @errors = @shoe.errors.full_messages
+      flash.now[:notice] = @shoe.errors.full_messages
       render :new
     end
   end
