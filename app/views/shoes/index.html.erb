@@ -1,0 +1,7 @@
+<% @shoes.each do |shoe| %>
+  <div>
+    <p><%= shoe.model %> <%= shoe.version %> <%= shoe.brand %> </p>
+
+    <%= image_tag(shoe.picture) %>
+  </div>
+<% end %>
