@@ -10,9 +10,9 @@ feature 'sign up' , %Q{
   # * Error if above not completed
   # * If above feilds are specified, I am an authenticated user
 
-  scenerio 'specifying valid and required information' do
+  scenario 'specifying valid and required information' do
     visit root_path
-    click_link 'Sign UP'
+    click_link 'Sign Up'
     fill_in 'First Name', with: 'Kobe'
     fill_in 'Last Name', with: 'Bryant'
     fill_in 'Username', with: 'KB'
@@ -37,6 +37,7 @@ feature 'sign up' , %Q{
   scenario 'password confirmation does not match confirmation' do
     visit root_path
     click_link 'Sign Up'
+
 
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'somethingDifferent'

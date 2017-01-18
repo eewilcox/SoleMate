@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
   it { should have_valid(:first_name).when('Kate', 'Emma') }
   it { should_not have_valid(:first_name).when(nil, '') }
 
@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
   it { should_not have_valid(:username).when(nil, '', 'Wattenbergers1588!') }
 
   it { should have_valid(:email).when('user@example.com', 'another@gmail.com') }
-  it { should_not have_valid(:email).when(nil, 'kb', '', 'mkd@com', 'emc.com') }
+  it { should_not have_valid(:email).when(nil, 'kb', '', 'emc.com') }
 
   it 'has a matching password confirmation for the password' do
     user = User.new
