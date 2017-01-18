@@ -15,6 +15,7 @@ feature 'sign up' , %Q{
     click_link 'Sign UP'
     fill_in 'First Name', with: 'Kobe'
     fill_in 'Last Name', with: 'Bryant'
+    fill_in 'Username', with: 'KB'
     fill_in 'Email', with: 'kbryant@gmail.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
