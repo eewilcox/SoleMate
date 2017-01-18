@@ -1,0 +1,58 @@
+<h1>New Shoe Form</h1>
+
+  <ul>
+  <% @errors.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+
+<%= form_for(@shoe) do |f| %>
+  <div class="field">
+    <%= f.label :brand %><br/>
+    <%= f.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= f.label :model %><br/>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :version %><br/>
+    <%= f.text_field :version %>
+  </div>
+
+  <div class="field">
+    <%= f.label :picture %><br/>
+    <%= f.text_field :picture %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %><br/>
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br/>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Shoe"%>
+  </div>
+<% end %>
+
+
+
+<!-- fill_in 'Model', with: "Kobe"
+fill_in 'Version', with: "2"
+fill_in 'Brand', with: "Adidas"
+fill_in 'Picture', with: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg"
+fill_in 'Year', with: "2000"
+fill_in 'Price', with: "126"
+fill_in 'Description', with: "This is not a particularly good shoe." -->
