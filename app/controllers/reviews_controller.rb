@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
       flash[:notice] =  "Review added successfully"
       redirect_to @shoe
     else
-      flash.now[:notice] = @review.errors.full_messages
+      flash[:notice] = @review.errors.full_messages
       redirect_to @shoe
     end
   end
