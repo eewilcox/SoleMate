@@ -3,3 +3,24 @@
 <p> <%= @shoe.year%> </p>
 <p> <%= @shoe.price %> </p>
 <p> <%= @shoe.description %> </p>
+
+
+
+<%= form_for [@shoe, @review] do |f| %>
+<%= f.label :rating %><br/>
+<%= f.text_field :rating %>
+<br/>
+<%= f.label :description, "Review" %><br/>
+<%= f.text_field :description %>
+<br/>
+<%= f.submit "Add Review"%>
+<% end %>
+
+<ul>
+  <% @reviews.each do |review| %>
+  <li>
+    <%= review.rating %>
+    <%= review.description %>
+  </li>
+  <% end %>
+</ul>

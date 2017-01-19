@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :shoes
+  resources :shoes do
+    resource :reviews, only: [:index, :new, :create]
+  end
 
   root "shoes#index"
 end

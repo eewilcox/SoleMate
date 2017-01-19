@@ -1,5 +1,7 @@
 class Shoe < ApplicationRecord
 
+  has_many :reviews
+
   validates :model, presence: true
   validates :version, presence: true
   validates :brand, presence: true
