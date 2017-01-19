@@ -3,3 +3,9 @@
 <p> <%= @shoe.year%> </p>
 <p> <%= @shoe.price %> </p>
 <p> <%= @shoe.description %> </p>
+
+<% if @shoe.user == current_user %>
+  <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+
+  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+<% end %>
