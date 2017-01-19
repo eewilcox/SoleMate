@@ -1,3 +1,5 @@
+require 'pry'
+
 class ReviewsController < ApplicationController
   def index
     @shoe = Shoe.find(params[:id])
@@ -7,19 +9,26 @@ class ReviewsController < ApplicationController
   def new
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.new
-    @errors = @review.errors
   end
 
   def create
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.new(review_params)
     @review.shoe = @shoe
-    if @review.save
-      redirect_to @shoe, notice: 'Review added successfully.'
+    if @review.save && current_user
+      flash[:notice] =  "Review added successfully"
+      redirect_to @shoe
     else
-      @errors = @review.errors.full_messages
+      flash.now[:notice] = @review.errors.full_messages
       redirect_to @shoe
     end
+  end
+
+  def destroy
+    #    <%= link_to 'Delete', shoe_reviews_path(@shoe), method: :delete, data: {confirm: "Are you sure?"} %>
+    @review = Review.find(params[:review_id])
+    @review.destroy
+    redirect_to @shoe
   end
 
   private

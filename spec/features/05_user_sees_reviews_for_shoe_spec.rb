@@ -8,29 +8,76 @@ require 'rails_helper'
 
 feature "visitor sees list of reviews on shoe page" do
   scenario "sees reviews for specific shoe" do
-    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks")
-    review_for_kobe_two = Review.create(rating: 1, description: "Bad shoe", shoe: kobe_two)
+    user = FactoryGirl.create(:user)
 
-    visit shoe_path(kobe_two)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Sign In'
 
-    expect(page).to have_content kobe_two.model
-    expect(page).to have_content review_for_kobe_two.rating
-    expect(page).to have_content review_for_kobe_two.description
+    visit new_shoe_path
+    fill_in 'Brand', with: "Adidas"
+    fill_in 'Model', with: "Kobe"
+    fill_in 'Version', with: "2"
+    fill_in 'Picture', with: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg"
+    fill_in 'Year', with: '2000'
+    fill_in 'Price', with: 125
+    fill_in 'Description', with: "This shoe sucks"
+
+    click_button 'Add Shoe'
+
+    fill_in 'Rating', with: 1
+    fill_in 'Review', with: "Bad shoe"
+
+    click_button 'Add Review'
+
+    expect(page).to have_content "Kobe 2"
+    expect(page).to have_content "1"
+    expect(page).to have_content "This shoe sucks"
   end
 
   scenario "does not see other reviews for other shoes" do
-    kobe_two = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks")
-    jordan = Shoe.create(model: "Air Jordan", version: "2", brand: "Nike", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks")
-    review_for_kobe_two = Review.create(rating: 3, description: "Ugly shoe", shoe: kobe_two)
-    review_for_jordan = Review.create(rating: 5, description: "Nice shoe", shoe: jordan)
+    user = FactoryGirl.create(:user)
 
-    visit shoe_path(jordan)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Sign In'
 
-    expect(page).to have_content jordan.model
-    expect(page).to have_content review_for_jordan.description
+    visit new_shoe_path
+    fill_in 'Brand', with: "Adidas"
+    fill_in 'Model', with: "Kobe"
+    fill_in 'Version', with: "2"
+    fill_in 'Picture', with: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg"
+    fill_in 'Year', with: '2000'
+    fill_in 'Price', with: 125
+    fill_in 'Description', with: "This shoe sucks"
 
-    expect(page).not_to have_content kobe_two.model
-    expect(page).not_to have_content review_for_kobe_two.rating
-    expect(page).not_to have_content review_for_kobe_two.description
+    click_button 'Add Shoe'
+
+    fill_in 'Rating', with: 1
+    fill_in 'Review', with: "Bad shoe"
+
+    click_button 'Add Review'
+
+    expect(page).to_not have_content "Air Jordan"
+    expect(page).to_not have_content "4"
+    expect(page).to_not have_content "This shoe is great"
   end
+
+  scenario 'an unauthenticated user cannot navigate a shoe edit page (they will be redirected to sign in page)' do
+   user = FactoryGirl.create(:user)
+   shoe = FactoryGirl.create(:shoe)
+
+   visit shoe_path(shoe)
+
+   fill_in 'Rating', with: 5
+   fill_in 'Review', with: "Good shoe"
+   click_link 'Add Review'
+
+   expect(page).to have_content('You need to sign in or sign up before continuing.')
+   expect(page).to_not have_content('Review added successfully')
+ end
 end
