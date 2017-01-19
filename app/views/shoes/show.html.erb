@@ -4,6 +4,7 @@
 <p> <%= @shoe.price %> </p>
 <p> <%= @shoe.description %> </p>
 
+
 <%= form_for [@shoe, @review] do |f| %>
 <%= f.label :rating %><br/>
 <%= f.text_field :rating %>
@@ -23,3 +24,12 @@
   </li>
   <% end %>
 </ul>
+
+<% if @shoe.user == current_user %>
+  <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+
+  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+<% end %>
+
+<p><%= link_to "Back To Shoes", shoes_path %></p>
+

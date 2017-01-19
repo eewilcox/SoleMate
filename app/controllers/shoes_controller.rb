@@ -26,6 +26,36 @@ class ShoesController < ApplicationController
     end
   end
 
+  def edit
+    @shoe = Shoe.find(params[:id])
+    if @shoe.user != current_user
+      flash[:notice] =  "Only shoe owner can update shoe information"
+      redirect_to shoe_path(@shoe)
+    end
+  end
+
+  def update
+    @shoe = Shoe.find(params[:id])
+    if @shoe.user == current_user && @shoe.update(shoe_params)
+      flash[:notice] =  "Shoe updated successfully"
+      redirect_to shoe_path(@shoe)
+    else
+      flash.now[:notice] = @shoe.errors.full_messages
+      render :edit
+    end
+  end
+
+  def destroy
+    @shoe = Shoe.find(params[:id])
+    if @shoe.user == current_user
+      @shoe.destroy
+      redirect_to shoes_path
+    else
+      flash[:notice] =  "Only shoe owner can delete shoe"
+      redirect_to shoe_path(@shoe)
+    end
+  end
+
   private
 
   def shoe_params

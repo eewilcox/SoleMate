@@ -13,3 +13,7 @@ class Shoe < ApplicationRecord
   validates :description, presence: true
   validates :user, presence: true
 end
+
+
+# validates :picture, inclusion: { in: %w(http),
+# message: "%{value} is not a valid link.  Please include an http link." }
