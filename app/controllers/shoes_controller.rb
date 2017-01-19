@@ -6,6 +6,8 @@ class ShoesController < ApplicationController
 
   def show
     @shoe = Shoe.find(params[:id])
+    @review = Review.new
+    @reviews = @shoe.reviews
   end
 
   def new
