@@ -9,6 +9,14 @@ feature 'user signs updates user info', %Q{
 # * If I update my password I should be told the change was successful
 # * I can delete my account
 
+  scenario 'an unauthenticated user cannot navigate to user edit page (they will be redirected to sign in page)' do
+    user = FactoryGirl.create(:user)
+    visit edit_user_registration_path
+
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to_not have_content('Update')
+    expect(page).to_not have_content('Cancel my account')
+  end
 
   scenario 'an already authenticated user can change their email' do
     user = FactoryGirl.create(:user)
