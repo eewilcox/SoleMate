@@ -1,11 +1,5 @@
 <h1>New Shoe Form</h1>
 
-  <ul>
-  <% @errors.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-
 <%= form_for(@shoe) do |f| %>
   <div class="field">
     <%= f.label :brand %><br/>
