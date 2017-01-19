@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.new(review_params)
     @review.shoe = @shoe
-    if @review.save && current_user
+    if @review.save
       flash[:notice] =  "Review added successfully"
       redirect_to @shoe
     else
@@ -25,8 +25,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    #    <%= link_to 'Delete', shoe_reviews_path(@shoe), method: :delete, data: {confirm: "Are you sure?"} %>
-    @review = Review.find(params[:review_id])
+    @shoe = Shoe.find(params[:shoe_id])
+    @review = Review.find(params[:format])
     @review.destroy
     redirect_to @shoe
   end
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:description, :rating)
+    params.require(:review).permit(:description, :rating, :review)
   end
 
 end

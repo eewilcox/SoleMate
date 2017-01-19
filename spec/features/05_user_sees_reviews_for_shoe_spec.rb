@@ -69,13 +69,13 @@ feature "visitor sees list of reviews on shoe page" do
 
   scenario 'an unauthenticated user cannot navigate a shoe edit page (they will be redirected to sign in page)' do
    user = FactoryGirl.create(:user)
-   shoe = FactoryGirl.create(:shoe)
+   shoe = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks", user_id: user.id)
 
    visit shoe_path(shoe)
 
    fill_in 'Rating', with: 5
    fill_in 'Review', with: "Good shoe"
-   click_link 'Add Review'
+   click_button 'Add Review'
 
    expect(page).to have_content('You need to sign in or sign up before continuing.')
    expect(page).to_not have_content('Review added successfully')

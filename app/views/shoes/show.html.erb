@@ -4,8 +4,6 @@
 <p> <%= @shoe.price %> </p>
 <p> <%= @shoe.description %> </p>
 
-
-
 <%= form_for [@shoe, @review] do |f| %>
 <%= f.label :rating %><br/>
 <%= f.text_field :rating %>
@@ -21,7 +19,7 @@
   <li>
     <%= review.rating %>
     <%= review.description %>
-
+    <%= link_to "Delete", shoe_reviews_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
   </li>
   <% end %>
 </ul>
