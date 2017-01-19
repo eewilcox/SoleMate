@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :reviews, only: [:index, :new, :create, :destroy]
   end
 
+
   root "shoes#index"
 end
