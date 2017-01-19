@@ -1,6 +1,8 @@
 class Shoe < ApplicationRecord
   belongs_to :user
 
+  has_many :reviews
+
   validates :model, presence: true
   validates :version, presence: true
   validates :brand, presence: true
