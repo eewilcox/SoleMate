@@ -18,6 +18,8 @@
 <ul>
   <% @reviews.each do |review| %>
   <li>
+    <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
+    <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
     <%= review.rating %>
     <%= review.description %>
     <%= link_to "Delete", shoe_reviews_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
@@ -32,4 +34,3 @@
 <% end %>
 
 <p><%= link_to "Back To Shoes", shoes_path %></p>
-
