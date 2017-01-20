@@ -1,7 +1,7 @@
 class Shoe < ApplicationRecord
   belongs_to :user
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :model, presence: true
   validates :version, presence: true
