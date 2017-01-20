@@ -20,7 +20,10 @@
   <li>
     <%= review.rating %>
     <%= review.description %>
-    <%= link_to "Delete", shoe_reviews_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
+    <% if review.user == current_user %>
+      <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
+      <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
+    <% end %>
   </li>
   <% end %>
 </ul>
@@ -32,4 +35,3 @@
 <% end %>
 
 <p><%= link_to "Back To Shoes", shoes_path %></p>
-
