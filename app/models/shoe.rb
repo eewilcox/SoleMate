@@ -1,7 +1,7 @@
 class Shoe < ApplicationRecord
   belongs_to :user
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :model, presence: true
   validates :version, presence: true
@@ -12,4 +12,8 @@ class Shoe < ApplicationRecord
   validates :price, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: {greater_than: 0}
   validates :description, presence: true
   validates :user, presence: true
+
+  def self.search(search)
+  where("brand ILIKE ? OR model ILIKE ?", "%#{search}%", "%#{search}%")
+  end
 end

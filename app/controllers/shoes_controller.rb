@@ -2,6 +2,11 @@ class ShoesController < ApplicationController
 
   def index
     @shoes = Shoe.all
+    if params[:search]
+      @shoes = Shoe.search(params[:search]).order("created_at DESC")
+    else
+      @shoes = Shoe.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -48,7 +53,6 @@ class ShoesController < ApplicationController
   def destroy
     @shoe = Shoe.find(params[:id])
     if @shoe.user == current_user
-      @shoe.reviews.destroy_all
       @shoe.destroy
       redirect_to shoes_path
     else
