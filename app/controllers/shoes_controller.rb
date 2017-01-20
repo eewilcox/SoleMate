@@ -2,6 +2,11 @@ class ShoesController < ApplicationController
 
   def index
     @shoes = Shoe.all
+    if params[:search]
+      @shoes = Shoe.search(params[:search]).order("created_at DESC")
+    else
+      @shoes = Shoe.all.order("created_at DESC")
+    end
   end
 
   def show
