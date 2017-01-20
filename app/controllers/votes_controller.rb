@@ -19,9 +19,9 @@ class VotesController < ApplicationController
     @vote.user = current_user
     if @vote.save
       if @vote.poll
-        @review.votes += 1
+        @review.tally += 1
       else
-        @review.votes -= 1
+        @review.tally -= 1
       end
       flash[:notice] =  "Vote added successfully"
       redirect_to @review.shoe
