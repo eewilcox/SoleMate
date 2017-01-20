@@ -17,7 +17,3 @@ class Shoe < ApplicationRecord
   where("brand ILIKE ? OR model ILIKE ?", "%#{search}%", "%#{search}%")
   end
 end
-
-
-# validates :picture, inclusion: { in: %w(http),
-# message: "%{value} is not a valid link.  Please include an http link." }

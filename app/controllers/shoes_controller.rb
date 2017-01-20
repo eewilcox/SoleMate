@@ -53,6 +53,7 @@ class ShoesController < ApplicationController
   def destroy
     @shoe = Shoe.find(params[:id])
     if @shoe.user == current_user
+      @shoe.reviews.destroy_all
       @shoe.destroy
       redirect_to shoes_path
     else
