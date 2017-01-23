@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
 
@@ -38,7 +39,6 @@ class ReviewsController < ApplicationController
   def update
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
-
     if @review.user == current_user && @review.update(review_params)
       flash[:notice] =  "Review updated successfully"
       redirect_to shoe_path(@shoe)
@@ -50,18 +50,13 @@ class ReviewsController < ApplicationController
 
   def vote
     @review = Review.find(params[:id])
-    binding.pry
-  end
-
-  def tally
-    @shoe = Shoe.find(params[:shoe_id])
-    @review = Review.find(params[:id])
-    # if @vote.poll
-    #   @review.tally += 1
-    # else
-    #   @review.tally -= 1
-    # end
-    #binding.pry
+    if params[:poll] == "true"
+      @review.tally += 1
+    else
+     @review.tally -= 1
+   end
+   @review.save
+    redirect_to @review.shoe
   end
 
   def destroy
@@ -79,7 +74,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:description, :rating)
+    params.require(:review).permit(:description, :rating, :tally)
   end
 
 end

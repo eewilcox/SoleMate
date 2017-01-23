@@ -19,8 +19,7 @@ class VotesController < ApplicationController
     @vote.user = current_user
     if @vote.save
       flash[:notice] =  "Vote added successfully"
-      #redirect_to @review.shoe
-      redirect_to vote_review_path(@review), params: {poll: @vote.poll }
+      redirect_to vote_review_path(@review, poll: @vote.poll)
     else
       flash[:notice] = @review.errors.full_messages
       redirect_to @review.shoe

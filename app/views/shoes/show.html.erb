@@ -20,6 +20,7 @@
   <li>
     <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
     <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
+    <%= review.tally %>
     <%= review.rating %>
     <%= review.description %>
     <% if review.user == current_user %>
