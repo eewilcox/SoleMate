@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if current_user.admin?
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    if current_user.admin?  
       @user.shoes.destroy_all
       @user.reviews.destroy_all
       @user.destroy
