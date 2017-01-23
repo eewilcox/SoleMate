@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   def destroy
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
-    if @review.user == current_user
+    if @review.user == current_user || current_user.admin?
       @review.destroy
       redirect_to @shoe
     else

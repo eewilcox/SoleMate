@@ -22,6 +22,8 @@
     <%= review.description %>
     <% if review.user == current_user %>
       <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
+    <% end %>
+    <% if review.user == current_user || current_user.admin? %>
       <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
     <% end %>
   </li>
@@ -30,7 +32,9 @@
 
 <% if @shoe.user == current_user %>
   <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+<% end %>
 
+<% if @shoe.user == current_user || current_user.admin? %>
   <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
 <% end %>
 

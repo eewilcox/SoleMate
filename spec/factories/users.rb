@@ -6,5 +6,6 @@ FactoryGirl.define do
     sequence(:username) { |n| "username #{n}"}
     password 'password'
     password_confirmation 'password'
+    admin false 
   end
 end
