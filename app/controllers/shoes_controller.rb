@@ -52,11 +52,11 @@ class ShoesController < ApplicationController
 
   def destroy
     @shoe = Shoe.find(params[:id])
-    if @shoe.user == current_user
+    if @shoe.user == current_user || current_user.admin?
       @shoe.destroy
       redirect_to shoes_path
     else
-      flash[:notice] =  "Only shoe owner can delete shoe"
+      flash[:notice] =  "Only shoe owner or Admin can delete shoe"
       redirect_to shoe_path(@shoe)
     end
   end

@@ -46,17 +46,15 @@ feature "visitor adds a review to shoe page" do
     expect(page).to have_content "Rating must be between 1 - 5"
   end
 
-  scenario 'an unauthenticated user cannot add a review, they be redirected to the sign in page' do
-   user = FactoryGirl.create(:user)
-   shoe = Shoe.create(model: "Kobe", version: "2", brand: "Adidas", picture: "https://adictscorner.files.wordpress.com/2015/08/1395633122281.jpg", year: "2000", price: 125, description: "This shoe sucks", user_id: user.id)
+  scenario 'an unauthenticated user cannot add a review, they are redirected to the sign in page' do
+    user = FactoryGirl.create(:user)
+    shoe = FactoryGirl.create(:shoe, user: user)
+    user.admin = false
+    user.save
 
-   visit shoe_path(shoe)
+    visit shoe_path(shoe)
 
-   fill_in 'Rating', with: 5
-   fill_in 'Review', with: "Good shoe"
-   click_button 'Add Review'
-
-   expect(page).to have_content('You need to sign in or sign up before continuing.')
-   expect(page).to_not have_content('Review added successfully')
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to_not have_content('Review added successfully')
  end
 end
