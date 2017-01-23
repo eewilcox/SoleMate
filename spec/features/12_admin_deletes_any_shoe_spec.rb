@@ -4,10 +4,14 @@ require "rails_helper"
   # [] I want to delete the information of any shoe
 
 feature "admin can delete shoe information" do
+  let (:user) { FactoryGirl.create(:user) }
+  let (:user1) { FactoryGirl.create(:user) }
+  let (:shoe) { FactoryGirl.create(:shoe, user: user) }
+  let (:shoe1) { FactoryGirl.create(:shoe, user: user1) }
+
   scenario "admin deletes shoe successfully, for which they are also the owner" do
-    user = FactoryGirl.create(:user)
-    shoe = FactoryGirl.create(:shoe, user: user)
     user.admin = true
+    shoe
     user.save
 
     visit root_path
@@ -24,11 +28,10 @@ feature "admin can delete shoe information" do
   end
 
   scenario "admin deletes shoe successfully, for which they are not the owner" do
-    user = FactoryGirl.create(:user)
-    user1 = FactoryGirl.create(:user)
-    shoe = FactoryGirl.create(:shoe, user: user1)
+    user1
     user.admin = true
     user.save
+    shoe1
 
     visit root_path
     click_link 'Sign In'
@@ -37,7 +40,7 @@ feature "admin can delete shoe information" do
     click_button 'Sign In'
 
 
-    visit shoe_path(shoe)
+    visit shoe_path(shoe1)
     click_link 'Delete Shoe'
 
     expect(page).to have_button 'Add New Shoe'

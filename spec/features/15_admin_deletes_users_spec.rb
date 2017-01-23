@@ -4,9 +4,12 @@ require "rails_helper"
   # [] I want to delete the information of any user
 
 feature "admin can delete a user" do
+
+  let (:user) { FactoryGirl.create(:user) }
+  let (:user1) { FactoryGirl.create(:user) }
+
   scenario "admin deletes another user successfully" do
-    user = FactoryGirl.create(:user)
-    user1 = FactoryGirl.create(:user)
+    user1
     user.admin = true
     user.save
 
