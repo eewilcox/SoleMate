@@ -61,7 +61,7 @@ class ReviewsController < ApplicationController
     # else
     #   @review.tally -= 1
     # end
-    binding.pry
+    #binding.pry
   end
 
   def destroy
