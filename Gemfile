@@ -7,6 +7,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
+gem "haml-rails"
+gem "foundation-rails"
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'

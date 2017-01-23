@@ -18,22 +18,17 @@ class VotesController < ApplicationController
     @vote.review = @review
     @vote.user = current_user
     if @vote.save
-      if @vote.poll
-        @review.tally += 1
-      else
-        @review.tally -= 1
-      end
       flash[:notice] =  "Vote added successfully"
-      redirect_to @review.shoe
+      #redirect_to @review.shoe
+      redirect_to vote_review_path(@review), params: {poll: @vote.poll }
     else
       flash[:notice] = @review.errors.full_messages
-      redirect_to @review
+      redirect_to @review.shoe
     end
-    binding.pry
   end
 
   def destroy
-    # @vote = Vote.find(params[:Vote_id])
+    # @vote = Vote.find(params[:vote_id])
     # @review = Review.find(params[:format])
     # @review.destroy
     # redirect_to @vote

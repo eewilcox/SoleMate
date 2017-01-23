@@ -3,13 +3,23 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :shoes do
-    resources :reviews, only: [:index, :new, :create, :destroy]
+    resources :reviews, only: [:index, :new, :edit, :update, :create, :destroy] do
+    end
   end
 
   resources :reviews, only: [:show] do
+    member do
+      get 'vote'
+      post 'tally'
+    end
     resources :votes
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :shoes, only: [:index]
+    end
+  end
 
-  root "shoes#index"
+  root 'static_pages#index'
 end

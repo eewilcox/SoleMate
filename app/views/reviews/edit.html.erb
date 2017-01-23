@@ -1,0 +1,11 @@
+<h1>Update Review Form</h1>
+
+<%= form_for [@shoe, @review] do |f| %>
+  <%= f.label :rating %><br/>
+  <%= f.text_field :rating %>
+  <br/>
+  <%= f.label :description, "Review" %><br/>
+  <%= f.text_field :description %>
+  <br/>
+  <%= f.submit "Update Review"%>
+<% end %>
