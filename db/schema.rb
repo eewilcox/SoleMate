@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170120011539) do
     t.integer  "shoe_id",                 null: false
     t.integer  "rating",                  null: false
     t.text     "description"
-    t.integer  "votes",       default: 0
+    t.integer  "votes",       default: 0 
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id",                 null: false
