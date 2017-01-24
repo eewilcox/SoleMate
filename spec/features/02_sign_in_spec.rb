@@ -10,7 +10,7 @@ feature 'sign up' , %Q{
   # * Error if above not completed
   # * If above feilds are specified, I am an authenticated user
 
-  scenario 'specifying valid and required information' do
+  scenario 'specifying valid and required information (no profile picture upload)' do
     visit root_path
     click_link 'Sign Up'
     fill_in 'First Name', with: 'Kobe'
@@ -23,6 +23,23 @@ feature 'sign up' , %Q{
 
     expect(page).to have_content('Welcome to SoleMate')
     expect(page).to have_content('Sign Out')
+  end
+
+  scenario 'specifying valid and required information (profile picture uploaded)' do
+    visit root_path
+    click_link 'Sign Up'
+    fill_in 'First Name', with: 'Kobe'
+    fill_in 'Last Name', with: 'Bryant'
+    fill_in 'Username', with: 'KB'
+    fill_in 'Email', with: 'kbryant@gmail.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'Password Confirmation', with: 'password'
+    attach_file 'Profile Picture', "#{Rails.root}/spec/support/images/dog.png"
+    click_button 'Sign Up'
+
+    expect(page).to have_content('Welcome to SoleMate')
+    expect(page).to have_content('Sign Out')
+    expect(page).to have_css("img[src*='dog.png']")
   end
 
   scenario 'required information is not supplied' do
