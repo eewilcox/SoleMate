@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :shoes do
     resources :reviews, only: [:index, :new, :edit, :update, :create, :destroy] do
@@ -13,6 +12,8 @@ Rails.application.routes.draw do
     end
     resources :votes, only: [:index, :new, :edit, :update, :create]
   end
+
+  resources :users, only: [:index, :destroy]
 
   namespace :api do
     namespace :v1 do

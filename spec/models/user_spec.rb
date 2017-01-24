@@ -22,4 +22,14 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
     expect(user.errors[:password_confirmation]).to_not be_blank
   end
+
+  it "is not an admin if the role is not admin" do
+    user = FactoryGirl.create(:user, admin: false)
+    expect(user.admin?).to eq(false)
+  end
+
+  it "is an admin if the role is admin" do
+    user = FactoryGirl.create(:user, admin: true)
+    expect(user.admin?).to eq(true)
+  end
 end
