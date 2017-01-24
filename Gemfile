@@ -12,6 +12,7 @@ gem "foundation-rails"
 gem 'carrierwave'
 gem 'fog-aws'
 
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
