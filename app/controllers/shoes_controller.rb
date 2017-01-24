@@ -13,6 +13,7 @@ class ShoesController < ApplicationController
     @shoe = Shoe.find(params[:id])
     @review = Review.new
     @reviews = @shoe.reviews
+    @reviews = @reviews.order("tally DESC")
   end
 
   def new

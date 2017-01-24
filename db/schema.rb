@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170124152349) do
     t.integer  "shoe_id",                 null: false
     t.integer  "rating",                  null: false
     t.text     "description"
-    t.integer  "votes",       default: 0
+    t.integer  "tally",       default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id",                 null: false
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20170124152349) do
     t.string   "photo"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.boolean "poll"
+    t.index ["review_id"], name: "index_votes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
 end

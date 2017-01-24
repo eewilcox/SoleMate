@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   mount_uploader :photo, PhotoUploader
   has_many :shoes
+  has_many :votes
+  has_many :reviews, through: :votes
   has_many :reviews
 
   validates :first_name, presence: true
