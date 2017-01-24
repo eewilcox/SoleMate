@@ -10,9 +10,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:show] do
     member do
       get 'vote'
-      post 'tally'
     end
-    resources :votes
+    resources :votes, only: [:index, :new, :edit, :update, :create]
   end
 
   namespace :api do

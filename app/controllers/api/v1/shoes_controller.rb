@@ -5,5 +5,4 @@ class Api::V1::ShoesController < ApplicationController
     @shoes = Shoe.all
     render json: @shoes
   end
-
 end

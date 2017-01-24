@@ -26,10 +26,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
-
     if @review.user != current_user
       flash[:notice] =  "Only review owner can update review information"
       redirect_to shoe_path(@shoe)
@@ -50,11 +48,12 @@ class ReviewsController < ApplicationController
 
   def vote
     @review = Review.find(params[:id])
+    change = params[:change].to_i
     if params[:poll] == "true"
-      @review.tally += 1
-    else
-     @review.tally -= 1
-   end
+      @review.tally += 1 + change
+    elsif params[:poll] == "false"
+      @review.tally -= 1 + change
+    end
    @review.save
     redirect_to @review.shoe
   end
@@ -63,6 +62,9 @@ class ReviewsController < ApplicationController
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
     if @review.user == current_user
+      @review.votes.each do |vote|
+        vote.destroy
+      end
       @review.destroy
       redirect_to @shoe
     else
