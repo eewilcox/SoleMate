@@ -1,4 +1,4 @@
-
+require 'pry'
 
 class ReviewsController < ApplicationController
   def index
@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
   def edit
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
-
     if @review.user != current_user
       flash[:notice] =  "Only review owner can update review information"
       redirect_to shoe_path(@shoe)
@@ -38,7 +37,6 @@ class ReviewsController < ApplicationController
   def update
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
-
     if @review.user == current_user && @review.update(review_params)
       flash[:notice] =  "Review updated successfully"
       redirect_to shoe_path(@shoe)
@@ -48,10 +46,25 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def vote
+    @review = Review.find(params[:id])
+    change = params[:change].to_i
+    if params[:poll] == "true"
+      @review.tally += 1 + change
+    elsif params[:poll] == "false"
+      @review.tally -= 1 + change
+    end
+   @review.save
+    redirect_to @review.shoe
+  end
+
   def destroy
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
     if @review.user == current_user || current_user.admin?
+      @review.votes.each do |vote|
+        vote.destroy
+      end
       @review.destroy
       redirect_to @shoe
     else
@@ -63,7 +76,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:description, :rating)
+    params.require(:review).permit(:description, :rating, :tally)
   end
 
 end
