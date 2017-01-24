@@ -1,8 +1,6 @@
-require 'pry'
-
 class ReviewsController < ApplicationController
   def index
-    @shoe = Shoe.find(params[:id])
+    @shoe = Shoe.find(params[:shoe_id])
     @reviews = @shoe.reviews
   end
 
