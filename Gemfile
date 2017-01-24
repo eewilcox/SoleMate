@@ -10,6 +10,7 @@ gem 'devise'
 gem "haml-rails"
 gem "foundation-rails"
 gem 'carrierwave'
+gem 'fog-aws'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -25,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :production do
