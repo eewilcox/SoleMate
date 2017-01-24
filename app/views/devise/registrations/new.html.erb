@@ -24,6 +24,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :photo, 'Profile Picture' %><br />
+    <%= f.file_field :photo, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :password, 'Password' %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

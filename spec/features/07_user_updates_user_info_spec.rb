@@ -35,6 +35,24 @@ feature 'user signs updates user info', %Q{
     expect(page).to have_content('Your account has been updated successfully.')
   end
 
+  scenario 'an already authenticated user can upload a profile picture' do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Sign In'
+
+    click_link 'Change My User Info'
+
+    attach_file 'Profile Picture', "#{Rails.root}/spec/support/images/dog.png"
+    fill_in 'Current password', with: user.password
+    click_button 'Update'
+
+    expect(page).to have_content('Your account has been updated successfully.')
+    expect(page).to have_css("img[src*='dog.png']")
+  end
+
   scenario 'an already authenticated user can change their password' do
     user = FactoryGirl.create(:user)
     visit root_path
