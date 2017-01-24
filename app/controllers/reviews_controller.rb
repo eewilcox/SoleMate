@@ -52,7 +52,7 @@ class ReviewsController < ApplicationController
     elsif params[:poll] == "false"
       @review.tally -= 1 + change
     end
-   @review.save
+    @review.save
     redirect_to @review.shoe
   end
 
