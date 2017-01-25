@@ -11,26 +11,14 @@ $(function() {
       document.getElementById('app')
     );
   }
-  let upvoteButtons = document.getElementsByClassName('upvote');
-  for (let button of upvoteButtons) {
+  let buttons = document.getElementsByClassName('vote');
+  for(let button of buttons){
     ReactDOM.render(
       <VoteButton
-        label = "Upvote"
         review = {parseInt(button.dataset.id)}
-        poll = {true}
       />,
       button
     );
   }
-  let downvoteButtons = document.getElementsByClassName('downvote');
-  for (let button of downvoteButtons) {
-    ReactDOM.render(
-      <VoteButton
-        label = "Downvote"
-        review = {parseInt(button.dataset.id)}
-        poll = {false}
-      />,
-      button
-    );
-  }
+
 });

@@ -4,9 +4,10 @@ class VoteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tally: 0
+      tally: this.props.review.tally
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleUpvote = this.handleUpvote.bind(this);
+    this.handleDownvote = this.handleDownvote.bind(this);
   }
 
   componentDidMount() {
@@ -27,9 +28,9 @@ class VoteButton extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleClick(event) {
+  handleUpvote(event) {
     let data = {
-        poll: this.props.poll
+        poll: true
     };
     let jsonStringData = JSON.stringify(data);
 
@@ -42,7 +43,6 @@ class VoteButton extends Component {
         if (response.ok) {
           return response.json();
         } else {
-          console.log("Oops");
           let errorMessage = `${response.status} ($response.statusText)`,
             error = new Error(errorMessage);
             throw(error);
@@ -54,10 +54,42 @@ class VoteButton extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
+  handleDownvote(event) {
+    let data = {
+        poll: false
+    };
+    let jsonStringData = JSON.stringify(data);
+
+    fetch(`http://localhost:3000/api/v1/reviews/${this.props.review}/votes.json`,
+      { method: 'post',
+        body: jsonStringData,
+        credentials: 'include'
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          let errorMessage = `${response.status} ($response.statusText)`,
+            error = new Error(errorMessage);
+            throw(error);
+        }
+      })
+      .then(data => {
+         this.setState({ tally: data });
+      })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render() {
     return(
-      <div onClick={this.handleClick}>
-        <h1>{this.props.label} {this.state.tally}</h1>
+      <div>
+        <div onClick={this.handleUpvote}>
+          <button>Upvote</button>
+        </div>
+        <div> {this.state.tally} </div>
+        <div onClick={this.handleDownvote}>
+          <button>Downvote</button>
+        </div>
       </div>
     );
   }
