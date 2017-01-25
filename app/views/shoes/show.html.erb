@@ -18,6 +18,8 @@
 <ul>
   <% @reviews.each do |review| %>
   <li>
+    <button type="button" class="button small upvote" id="vote-button" data-id="<%= review.id %>"></button>
+    <button type="button" class="button small downvote" id="vote-button" data-id="<%= review.id %>"></button>
     <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
     <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
     Score: <%= review.tally %>

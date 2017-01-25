@@ -2,7 +2,6 @@ class VotesController < ApplicationController
   def index
     @review = Review.find(params[:review_id])
     @votes = @review.votes
-    #render json: @votes
   end
 
   def new
