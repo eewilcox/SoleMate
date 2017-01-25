@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :shoes do
-    resources :reviews, only: [:index, :new, :edit, :update, :create, :destroy] do
+    resources :reviews, only: [:new, :edit, :update, :create, :destroy] do
     end
   end
 

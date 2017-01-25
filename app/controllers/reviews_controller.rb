@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  def index
-    @shoe = Shoe.find(params[:shoe_id])
-    @reviews = @shoe.reviews
-  end
+  # def index
+  #   @shoe = Shoe.find(params[:shoe_id])
+  #   @reviews = @shoe.reviews
+  # end
 
   def new
     @shoe = Shoe.find(params[:shoe_id])
@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     if @review.save
       ReviewMailer.new_review(@review).deliver_later
       flash[:notice] =  "Review added successfully"
-      redirect_to shoe_path(@review.shoe.id)
+      redirect_to @shoe
     else
       flash[:notice] = @review.errors.full_messages
       redirect_to @shoe
