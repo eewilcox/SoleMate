@@ -7,9 +7,10 @@ class App extends Component {
     this.state = {
       shoeData: [],
     };
+    this.fetching = this.fetching.bind(this);
   }
 
-  componentDidMount() {
+  fetching () {
     fetch('/api/v1/shoes.json')
       .then(response => {
         if (response.ok) {
@@ -24,27 +25,35 @@ class App extends Component {
       });
   }
 
+
+  componentDidMount() {
+    this.fetching();
+    setInterval(
+      this.fetching, 5000);
+  }
+
   render(){
 
     let shoes;
+    if (this.state.shoeData) {
       shoes = this.state.shoeData.map(shoe => {
         return(
           <div>
             <Shoe
-            key={shoe.id}
-            id={shoe.id}
-            model={shoe.model}
-            version={shoe.version}
-            brand={shoe.brand}
-            picture={shoe.picture}
-            year={shoe.year}
-            price={shoe.price}
-            description={shoe.description}
+              key={shoe.id}
+              id={shoe.id}
+              model={shoe.model}
+              version={shoe.version}
+              brand={shoe.brand}
+              picture={shoe.picture}
+              year={shoe.year}
+              price={shoe.price}
+              description={shoe.description}
             />
           </div>
         )
       })
-
+    }
 
     return (
       <div>
