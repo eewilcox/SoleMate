@@ -27,7 +27,6 @@ class App extends Component {
   render(){
 
     let shoes;
-    if (this.state.shoeData) {
       shoes = this.state.shoeData.map(shoe => {
         return(
           <div>
@@ -45,7 +44,7 @@ class App extends Component {
           </div>
         )
       })
-    }
+
 
     return (
       <div>

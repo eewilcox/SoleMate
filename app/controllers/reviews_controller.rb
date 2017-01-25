@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     if @review.save
       ReviewMailer.new_review(@review).deliver_later
       flash[:notice] =  "Review added successfully"
-      redirect_to @shoe
+      redirect_to shoe_path(@review.shoe.id)
     else
       flash[:notice] = @review.errors.full_messages
       redirect_to @shoe
