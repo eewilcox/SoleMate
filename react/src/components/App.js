@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Shoe from "./Shoe";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/api/v1/shoes.json')
       .then(response => {
         if (response.ok) {
@@ -23,6 +24,7 @@ class App extends Component {
         this.setState({ shoeData: data });
       });
   }
+
 
   render(){
 
@@ -49,6 +51,7 @@ class App extends Component {
 
     return (
       <div>
+      <h3><a href={'/shoes/new'}>Add New Shoe</a></h3>
         {shoes}
       </div>
     )

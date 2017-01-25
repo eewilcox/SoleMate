@@ -1,10 +1,14 @@
 <h1> <%= @shoe.brand %> <%= @shoe.model %> <%= @shoe.version %> </h1>
-<%= image_tag(@shoe.picture) %>
-<p> <%= @shoe.year%> </p>
-<p> <%= @shoe.price %> </p>
-<p> <%= @shoe.description %> </p>
-
-
+<div class="row">
+  <div class="large-6 columns">
+    <%= image_tag(@shoe.picture) %>
+  </div>
+    <div class="large-6 columns">
+      <p> Year: <%= @shoe.year%> </p>
+      <p> Price: <%= @shoe.price %> </p>
+      <p> Description: <%= @shoe.description %> </p>
+    </div>
+  </div>
 <%= form_for [@shoe, @review] do |f| %>
 <%= f.label :rating %><br/>
 <%= f.text_field :rating %>

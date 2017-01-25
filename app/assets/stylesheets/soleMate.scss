@@ -1,0 +1,45 @@
+body{
+  background-color: white;
+  color: #051594;
+  font: verdana;
+}
+
+h1 {
+  text-align: center;
+  text: bold;
+  padding-top: 20px;
+  font-size: 50pt;
+
+}
+
+h3{
+  text: bold;
+  padding: 20px;
+  font-size: 30pt;
+  text-align: center;
+}
+
+h5{
+  font-size: 20pt;
+}
+
+.top-bar-left{
+  padding-right: 10px;
+}
+
+img{
+  max-width: 200px;
+  max-height: 200px;
+  border: 1px solid;
+  padding: 2px;
+}
+
+.row{
+  margin: 0 auto;
+}
+
+.shoe{
+  border: solid, 1px;
+  max-width: 300px;
+  max-height: 300px;
+}
