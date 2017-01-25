@@ -45,18 +45,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def vote
-    @review = Review.find(params[:id])
-    change = params[:change].to_i
-    if params[:poll] == "true"
-      @review.tally += 1 + change
-    elsif params[:poll] == "false"
-      @review.tally -= 1 + change
-    end
-    @review.save
-    redirect_to @review.shoe
-  end
-
   def destroy
     @shoe = Shoe.find(params[:shoe_id])
     @review = Review.find(params[:id])
