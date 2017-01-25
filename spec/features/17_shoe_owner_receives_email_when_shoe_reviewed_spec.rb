@@ -2,9 +2,8 @@ require "rails_helper"
 
 feature "a shoe owner recieves an email when their shoe is reviewed" do
   scenario "shoe is reviewed" do
-
-    shoe = FactoryGirl.create(:shoe)
     user = FactoryGirl.create(:user)
+    shoe = FactoryGirl.create(:shoe, user: user)
 
     visit root_path
     click_link 'Sign In'
