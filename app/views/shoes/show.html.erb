@@ -17,11 +17,10 @@
 
 <ul>
   <% @reviews.each do |review| %>
-  <li>
-    <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
-    <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
-    Score: <%= review.tally %>
+  <p>Shoe Rating:
     <%= review.rating %>
+  </p>
+  <p>
     <%= review.description %>
     <% if review.user == current_user %>
       <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
@@ -29,7 +28,12 @@
     <% if review.user == current_user || current_user.admin? %>
       <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
     <% end %>
-  </li>
+  <p>
+    <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
+    <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
+    Review Score: <%= review.tally %>
+  </p>
+  </p>
   <% end %>
 </ul>
 

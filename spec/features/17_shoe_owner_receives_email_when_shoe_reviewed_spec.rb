@@ -2,7 +2,6 @@ require "rails_helper"
 
 feature "a shoe owner recieves an email when their shoe is reviewed" do
   scenario "shoe is reviewed" do
-    ActionMailer::Base.deliveries.clear
 
     shoe = FactoryGirl.create(:shoe)
     user = FactoryGirl.create(:user)

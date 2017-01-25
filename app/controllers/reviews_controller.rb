@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review.shoe = @shoe
     @review.user = current_user
     if @review.save
-      ReviewMailer.new_review(@review).deliver_now
+      ReviewMailer.new_review(@review).deliver_later
       flash[:notice] =  "Review added successfully"
       redirect_to @shoe
     else
