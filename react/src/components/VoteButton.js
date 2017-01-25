@@ -11,7 +11,7 @@ class VoteButton extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/v1/reviews/${this.props.review}/votes`)
+    fetch(`/api/v1/reviews/${this.props.review}/votes.json`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -34,7 +34,7 @@ class VoteButton extends Component {
     };
     let jsonStringData = JSON.stringify(data);
 
-    fetch(`http://localhost:3000/api/v1/reviews/${this.props.review}/votes.json`,
+    fetch(`/api/v1/reviews/${this.props.review}/votes.json`,
       { method: 'post',
         body: jsonStringData,
         credentials: 'include'
@@ -60,7 +60,7 @@ class VoteButton extends Component {
     };
     let jsonStringData = JSON.stringify(data);
 
-    fetch(`http://localhost:3000/api/v1/reviews/${this.props.review}/votes.json`,
+    fetch(`/api/v1/reviews/${this.props.review}/votes.json`,
       { method: 'post',
         body: jsonStringData,
         credentials: 'include'
@@ -84,11 +84,11 @@ class VoteButton extends Component {
     return(
       <div>
         <div onClick={this.handleUpvote}>
-          <button>Upvote</button>
+          <button>+</button>
         </div>
         <div> {this.state.tally} </div>
         <div onClick={this.handleDownvote}>
-          <button>Downvote</button>
+          <button>-</button>
         </div>
       </div>
     );
