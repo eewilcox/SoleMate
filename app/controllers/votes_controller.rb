@@ -10,7 +10,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @change = 0
+    change = 0
     @review = Review.find(params[:review_id])
     voted = Vote.where({user_id: current_user.id, review_id: params[:review_id]})
     if voted.exists?
@@ -22,12 +22,17 @@ class VotesController < ApplicationController
       end
       if @vote.poll == poll
         @vote.destroy
-        poll = poll ? "false" : "true"
-        redirect_to vote_review_path(@review, poll: poll)
+        if poll == true
+          @review.tally -= 1
+        elsif poll == false
+          @review.tally += 1
+        end
+        @review.save
+        redirect_to @review.shoe
         return
       else
         @vote.poll = poll
-        @change = 1
+        change = 1
       end
     else
       @vote = Vote.new
@@ -37,7 +42,13 @@ class VotesController < ApplicationController
     end
     if @vote.save
       flash[:notice] =  "Vote added successfully"
-      redirect_to vote_review_path(@review, poll: @vote.poll, change: @change)
+      if params[:poll] == "true"
+        @review.tally += 1 + change
+      elsif params[:poll] == "false"
+        @review.tally -= 1 + change
+      end
+      @review.save
+      redirect_to @review.shoe
     else
       flash[:notice] = @review.errors.full_messages
       redirect_to @review.shoe

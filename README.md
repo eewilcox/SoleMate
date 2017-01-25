@@ -5,3 +5,5 @@
 
 
 [![Code Climate](https://codeclimate.com/github/eewilcox/SoleMate/badges/gpa.svg)](https://codeclimate.com/github/eewilcox/SoleMate)
+
+SoleMate
