@@ -29,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     this.fetching();
     setInterval(
-      this.fetching, 5000);
+      this.fetching, 10000);
   }
 
   render(){
