@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:show] do
-    member do
-      get 'vote'
-    end
     resources :votes, only: [:index, :new, :edit, :update, :create]
   end
 
