@@ -33,8 +33,6 @@ class VoteButton extends Component {
     };
     let jsonStringData = JSON.stringify(data);
 
-    // when upvote or downvote is clicked
-    // i want to send the review id and the poll to the Votes controller
     fetch(`http://localhost:3000/api/v1/reviews/${this.props.review}/votes.json`,
       { method: 'post',
         body: jsonStringData,
