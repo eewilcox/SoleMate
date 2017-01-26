@@ -29,6 +29,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :production do

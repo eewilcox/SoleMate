@@ -1,11 +1,11 @@
 
 
-<%=link_to "<button>Add New Shoe</button>".html_safe, new_shoe_path %>
-
-<% @shoes.each do |shoe| %>
-  <div>
-    <p><%= link_to "#{shoe.brand} #{shoe.model} #{shoe.version}", shoe %> </p>
-
-    <%= image_tag(shoe.picture) %>
-  </div>
-<% end %>
+<h2><%=link_to "<button>Add New Shoe</button>".html_safe, new_shoe_path %></h2>
+<div class="row">
+  <% @shoes.each do |shoe| %>
+    <div class="large-4 columns">
+      <p><%= link_to "#{shoe.brand} #{shoe.model} #{shoe.version}", shoe %> </p>
+      <%= image_tag(shoe.picture) %>
+    </div>
+  <% end %>
+</div>

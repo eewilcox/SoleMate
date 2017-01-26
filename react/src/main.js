@@ -6,9 +6,6 @@ import App from './components/App';
 import VoteButton from './components/VoteButton';
 
 
-var minutes = 0.1, the_interval = minutes * 60 * 1000;
-
-
 $(function() {
   if (document.getElementById('app')) {
     ReactDOM.render(

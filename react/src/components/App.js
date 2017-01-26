@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Shoe from "./Shoe";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,6 @@ class App extends Component {
         this.setState({ shoeData: data });
       });
   }
-
 
   componentDidMount() {
     this.fetching();
@@ -57,7 +57,7 @@ class App extends Component {
 
     return (
       <div>
-        <h4><a href={'/shoes/new'}>Add New Shoe</a></h4>
+      <h3><a href={'/shoes/new'}>Add New Shoe</a></h3>
         {shoes}
       </div>
     )
