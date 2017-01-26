@@ -7,9 +7,10 @@ class App extends Component {
     this.state = {
       shoeData: [],
     };
+    this.fetching = this.fetching.bind(this);
   }
 
-  componentDidMount() {
+  fetching () {
     fetch('/api/v1/shoes.json')
       .then(response => {
         if (response.ok) {
@@ -24,6 +25,13 @@ class App extends Component {
       });
   }
 
+
+  componentDidMount() {
+    this.fetching();
+    setInterval(
+      this.fetching, 10000);
+  }
+
   render(){
 
     let shoes;
@@ -32,15 +40,15 @@ class App extends Component {
         return(
           <div>
             <Shoe
-            key={shoe.id}
-            id={shoe.id}
-            model={shoe.model}
-            version={shoe.version}
-            brand={shoe.brand}
-            picture={shoe.picture}
-            year={shoe.year}
-            price={shoe.price}
-            description={shoe.description}
+              key={shoe.id}
+              id={shoe.id}
+              model={shoe.model}
+              version={shoe.version}
+              brand={shoe.brand}
+              picture={shoe.picture}
+              year={shoe.year}
+              price={shoe.price}
+              description={shoe.description}
             />
           </div>
         )
@@ -49,6 +57,7 @@ class App extends Component {
 
     return (
       <div>
+        <h4><a href={'/shoes/new'}>Add New Shoe</a></h4>
         {shoes}
       </div>
     )

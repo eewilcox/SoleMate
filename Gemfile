@@ -11,6 +11,7 @@ gem "haml-rails"
 gem "foundation-rails"
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'rest-client'
 
 
 group :development do

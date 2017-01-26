@@ -32,11 +32,11 @@
 </ul>
 
 <% if @shoe.user == current_user %>
-  <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+ <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
 <% end %>
 
 <% if @shoe.user == current_user || current_user.admin? %>
-  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+ <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
 <% end %>
 
 <p><%= link_to "Back To Shoes", shoes_path %></p>
