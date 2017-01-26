@@ -1,11 +1,17 @@
 <h1>Update Review Form</h1>
 
-<%= form_for [@shoe, @review] do |f| %>
-  <%= f.label :rating %><br/>
-  <%= f.text_field :rating %>
-  <br/>
-  <%= f.label :description, "Review" %><br/>
-  <%= f.text_field :description %>
-  <br/>
-  <%= f.submit "Update Review"%>
-<% end %>
+<div class-"row">
+  <%= form_for [@shoe, @review] do |f| %>
+  <div class="large-2 columns">
+    <%= f.label :rating %>
+    <%= f.select :rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] %>
+  </div>
+  <div class="large-10 columns">
+    <%= f.label :description, "Review" %>
+    <%= f.text_field :description %>
+  </div>
+    <div class="links">
+      <%= f.submit "Update Review"%>
+    <% end %>
+  </div>
+</div>

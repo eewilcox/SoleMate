@@ -13,7 +13,7 @@ feature "a shoe owner recieves an email when their shoe is reviewed" do
 
     visit shoe_path(shoe)
 
-    fill_in "Rating", with: 3
+    select 2, from: "Rating"
     fill_in "Review", with: "Total garbage."
     click_button "Add Review"
 
