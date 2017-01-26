@@ -1,44 +1,49 @@
-<h1>Update Shoe Form</h1>
-
+<h1 class= "text-center">Update Shoe Form</h1>
+<div class = "row">
 <%= form_for(@shoe) do |f| %>
+<div class="large-6 columns">
   <div class="field">
-    <%= f.label :brand %><br/>
+    <%= f.label :brand, 'Brand' %><br/>
     <%= f.text_field :brand %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :model %><br/>
     <%= f.text_field :model %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :version %><br/>
     <%= f.text_field :version %>
   </div>
-
-  <div class="field">
+</div>
+  <div class="large-6 columns">
+ <div class="field">
     <%= f.label :picture %><br/>
     <%= f.text_field :picture %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :year %><br/>
     <%= f.text_field :year %>
   </div>
 
-  <div class="field">
+ <div class="field">
     <%= f.label :price %><br/>
     <%= f.text_field :price %>
   </div>
-
-  <div class="field">
+</div>
+<div class="large-12 columns">
+ <div class="field">
     <%= f.label :description %><br/>
     <%= f.text_area :description %>
   </div>
-
+</div>
+<div class="links">
   <div class="actions">
     <%= f.submit "Update Shoe"%>
   </div>
 <% end %>
 
 <p><%= link_to "Back To Shoe", @shoe %></p>
+</div>
