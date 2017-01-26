@@ -8,19 +8,18 @@
 
 ## Description
 
+SoleMate is a website that allows users to submit shoes, as well as some detailed information about the shoe. Users can submit a rating and optional text review for any shoe entered in our site's database. The submitter of the shoe will receive an email whenever their shoe is reviewed by someone. Users can also upvote or downvote a review, and the shoe's reviews will be sorted on the page by their vote score. 
+
 Heroku Link: https://solemate.herokuapp.com/
 
-ADD DESCRIPTION
 
-ADD SCREENSHOTS (FRIDAY)
-![MarkdownExplorer](image.png)
-(include image file in root directory)
+![SoleMate](image.png)
 
 ## Authors
-Kate Brown (https://github.com/kb8158)
-Dino Dourountoudakis (https://github.com/douroudous)
-John Nolan (https://github.com/JBNolan)
-Emma Wilcox (https://github.com/eewilcox)
+* Kate Brown (https://github.com/kb8158)
+* Dino Dourountoudakis (https://github.com/douroudous)
+* John Nolan (https://github.com/JBNolan)
+* Emma Wilcox (https://github.com/eewilcox)
 
 ## Features
 
@@ -30,7 +29,7 @@ Emma Wilcox (https://github.com/eewilcox)
 * Upvoting/downvoting shoe reviews
 * Emailing a user once their shoe has been reviewed
 
-## Technologies Used
+## Technologies
 
 * Ruby on Rails
 * ReactJS
@@ -46,7 +45,7 @@ npm install
 rake db:create && rake db:migrate && rake db:rollback && rake db:migrate
 ```
 
-## TO-DO List
+## To-Do List
 
 * Change colors on upvotes/downvotes based on user’s current review vote status.
 
