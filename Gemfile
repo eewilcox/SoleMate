@@ -11,6 +11,7 @@ gem "haml-rails"
 gem "foundation-rails"
 gem 'carrierwave'
 gem 'fog-aws'
+gem "font-awesome-rails"
 gem 'rest-client'
 gem 'sendgrid-ruby'
 
