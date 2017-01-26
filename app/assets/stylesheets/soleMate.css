@@ -1,0 +1,98 @@
+body{
+  color: #051594;
+  font-family: "Goudy Bookletter 1911";
+}
+
+h1 {
+  text-align: center;
+  text: bold;
+  padding-top: 20px;
+  font-size: 50pt;
+  font-family: "Goudy Bookletter 1911";
+
+}
+
+h2{
+  font-family: "Goudy Bookletter 1911";
+}
+
+h3{
+  text: bold;
+  padding: 20px;
+  font-size: 30pt;
+  text-align: center;
+  font-family: "Goudy Bookletter 1911";
+}
+
+h4{
+  font-size: 15pt;
+}
+
+h5{
+  font-size: 20pt;
+}
+
+.top-bar-left{
+  padding-right: 10px;
+}
+
+.log{
+  padding-left: 18px;
+}
+img{
+  max-width: 200px;
+  max-height: 200px;
+  padding: 0px 8px 20px 8px;
+}
+
+li{
+  list-style-type: none;
+}
+
+nav{
+  opacity: 0.8;
+  padding: 20px;
+  padding-bottom: 100px;
+  background: linear-gradient( to top, white, #556a8c);
+}
+
+nav a{
+  font-size: 30px;
+  color: white;
+  text: bold;
+}
+
+.alert{
+  padding-left: 18px;
+}
+
+.notice{
+  margin: 0 auto;
+  text-align: center;
+  color: #d3430e;
+  text: bold;
+  font-size: 20pt;
+}
+
+.password{
+  padding: 0;
+  margin: 0;
+}
+
+.shoe{
+  border: solid, 1px;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.review{
+  border: 1px, solid;
+}
+
+.links{
+  padding-left: 18px;
+}
+
+#user_password {
+  margin: 0;
+}

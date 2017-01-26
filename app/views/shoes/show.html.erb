@@ -18,9 +18,7 @@
 <ul>
   <% @reviews.each do |review| %>
   <li>
-    <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
-    <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
-    Score: <%= review.tally %>
+    <div class="vote" data-id="<%= review.id %>"></div>
     <%= review.rating %>
     <%= review.description %>
     <% if review.user == current_user %>
@@ -34,11 +32,11 @@
 </ul>
 
 <% if @shoe.user == current_user %>
-  <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+ <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
 <% end %>
 
 <% if @shoe.user == current_user || current_user.admin? %>
-  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+ <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
 <% end %>
 
-<p><%= link_to "Back To Shoes", shoes_path %></p>
+<p><%= link_to "Back To Shoes", root_path %></p>

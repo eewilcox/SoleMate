@@ -12,22 +12,27 @@
 
     <nav>
       <ul>
+
         <% if user_signed_in? %>
           <li> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> </li>
+        </div>
+
           <li> <%= link_to 'Change My User Info', edit_user_registration_path %></li>
           <p> <%= image_tag(current_user.photo) %> </p>
+
           <% if current_user.admin? %>
             <li> <%= link_to 'List of Users', users_path %> </li>
           <% end %>
         <%else%>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <% end %>
+          <div class="top-bar-left">
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          </div>
+          <div class="top-bar-right">
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+        </div>
       </ul>
-        <%= form_tag(shoes_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Shoes" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
+
     </nav>
 
     <% if notice.is_a?(Array) %>

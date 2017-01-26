@@ -12,6 +12,7 @@ gem "foundation-rails"
 gem 'carrierwave'
 gem 'fog-aws'
 gem "font-awesome-rails"
+gem 'rest-client'
 
 
 group :development do
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :production do
