@@ -1,6 +1,8 @@
+<div id="search-div">
 <%= form_tag(shoes_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Shoes" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Find Your SoleMate" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
+</div>
 
 <div id="app"></div>

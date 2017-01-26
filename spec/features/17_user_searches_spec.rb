@@ -13,7 +13,7 @@ feature "Visitor searches for a shoe" do
 
     visit root_path
 
-    fill_in 'Search Shoes', :with => 'Kobe'
+    fill_in 'Find Your SoleMate', :with => 'Kobe'
     click_button 'Search'
 
     expect(page).to have_content "Kobe"
@@ -29,7 +29,7 @@ feature "Visitor searches for a shoe" do
 
     visit root_path
 
-    fill_in 'Search Shoes', :with => 'Adidas'
+    fill_in 'Find Your SoleMate', :with => 'Adidas'
     click_button 'Search'
 
     expect(page).to have_content "Kobe"
@@ -45,7 +45,7 @@ feature "Visitor searches for a shoe" do
 
     visit root_path
 
-    fill_in 'Search Shoes', :with => 'Nike'
+    fill_in 'Find Your SoleMate', :with => 'Nike'
     click_button 'Search'
 
     expect(page).to_not have_content "Kobe"
