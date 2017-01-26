@@ -43,9 +43,9 @@ feature "visitors can add shoes" do
     fill_in 'user_password', with: user.password
     click_button 'Sign In'
 
-   visit new_shoe_path
+    visit new_shoe_path
 
-   click_button "Add Shoe"
+    click_button "Add Shoe"
     expect(page).to have_content "Model can't be blank"
     expect(page).to have_content "Version can't be blank"
     expect(page).to have_content "Brand can't be blank"
