@@ -124,8 +124,8 @@ nav a{
 }
 
 .review{
-  background: #9fb7dd;
-  /*opacity: .2;*/
+  background: linear-gradient( white, #dae1ed);
+
   margin-bottom: 15px;
 
 }
