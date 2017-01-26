@@ -12,7 +12,7 @@ gem "foundation-rails"
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'rest-client'
-
+gem 'sendgrid-ruby'
 
 group :development do
   gem 'listen', '~> 3.0.5'
