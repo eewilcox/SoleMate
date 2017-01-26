@@ -1,0 +1,28 @@
+
+#new-shoe-react a{
+  color: white;
+  padding: 10px;
+  opacity: 0.8;
+  text-align: center;
+  border-radius: 15px;
+  background: #F44D2D;
+  box-shadow: 3px 3px 1px grey;
+}
+
+#new-shoe-react a:hover, #new-shoe-react a:focus {
+  background: #356094;
+  border: solid 1px #2A4E77;
+  text-decoration: none;
+}
+
+#react-shoes {
+  max-width: 800px;
+  padding: 50px;
+  box-shadow: 0px 10px 5px rgba(0,0,0,0.2);
+}
+
+#react-shoes img {
+  max-width: 800px;
+  text-align: center;
+
+}
