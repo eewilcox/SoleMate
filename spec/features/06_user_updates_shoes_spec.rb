@@ -16,6 +16,7 @@ feature "authenticated user can update shoe information" do
 
     visit edit_shoe_path(shoe)
 
+
     fill_in 'Brand', with: 'Nike'
     click_button 'Update Shoe'
 
@@ -28,6 +29,7 @@ feature "authenticated user can update shoe information" do
     shoe = FactoryGirl.create(:shoe, user: user)
     visit root_path
     click_link 'Sign In'
+    
     fill_in 'Email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Sign In'

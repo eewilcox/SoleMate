@@ -1,7 +1,7 @@
 body{
-  background-color: white;
+
   color: #051594;
-  font: verdana;
+  font-family: "Goudy Bookletter 1911";
 }
 
 h1 {
@@ -9,15 +9,21 @@ h1 {
   text: bold;
   padding-top: 20px;
   font-size: 50pt;
+  font-family: "Goudy Bookletter 1911";
 
 }
 
+h2{
+  font-family: "Goudy Bookletter 1911";
+  padding-left: 18px;
+}
 
 h3{
   text: bold;
   padding: 20px;
   font-size: 30pt;
   text-align: center;
+  font-family: "Goudy Bookletter 1911";
 }
 
 h4{
@@ -39,6 +45,11 @@ img{
   padding: 2px;
 }
 
+.password{
+  padding: 0;
+  margin: 0;
+}
+
 .shoe{
   border: solid, 1px;
   max-width: 300px;
@@ -51,4 +62,8 @@ img{
 
 .links{
   padding-left: 18px;
+}
+
+#user_password {
+  margin: 0;
 }

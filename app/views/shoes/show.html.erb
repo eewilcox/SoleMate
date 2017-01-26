@@ -1,63 +1,44 @@
 <h1> <%= @shoe.brand %> <%= @shoe.model %> <%= @shoe.version %> </h1>
-<div class="row">
-  <div class="large-6 columns">
-    <%= image_tag(@shoe.picture) %>
-  </div>
-    <div class="large-6 columns">
-      <h5> Year: <%= @shoe.year%> </h5>
-      <h5> Price: <%= @shoe.price %> </h5>
-      <h5> Description: <%= @shoe.description %> </h5>
-    </div>
-  </div>
-</div>
+<%= image_tag(@shoe.picture) %>
+<p> <%= @shoe.year%> </p>
+<p> <%= @shoe.price %> </p>
+<p> <%= @shoe.description %> </p>
 
-<div class="row">
+
+<%= form_for [@shoe, @review] do |f| %>
+<%= f.label :rating %><br/>
+<%= f.text_field :rating %>
+<br/>
+<%= f.label :description, "Review" %><br/>
+<%= f.text_field :description %>
+<br/>
+<%= f.submit "Add Review"%>
+<% end %>
+
+<ul>
   <% @reviews.each do |review| %>
-      <div class="large-2 columns">
-        <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
-        <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
-        Score: <%= review.tally %>
-      </div>
-    <div>
-      <div class=review>
-      <div class="large-10 columns">
-        <h4>Rating: <%= review.rating %></h4>
-        <h4>Description: <%= review.description %></h4>
-      </div>
-        <% if review.user == current_user %>
-          <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
-        <% end %>
-        <% if review.user == current_user || current_user.admin? %>
-          <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
-        <% end %>
-      <% end %>
-    </div>
-   </div>
-  </div>
-
-
-<div class="row">
-  <div class="large-2 columns">
-    <%= form_for [@shoe, @review] do |f| %>
-    <%= f.label :rating %>
-    <%= f.select :rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5,5] ] %>
-  </div>
-  <div class="large-8 columns">
-    <%= f.label :description, "Review" %>
-    <%= f.text_field :description %>
-    <div class="large-1 columns">
-      <%= f.submit "Add Review"%>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <% if @shoe.user == current_user %>
-    <%= link_to "Update Shoe Information", edit_shoe_path %></br>
+  <li>
+    <%= button_to "Upvote", review_votes_path(review), method: :post, params:{poll: true}%>
+    <%= button_to "Downvote", review_votes_path(review), method: :post, params:{poll: false}%>
+    Score: <%= review.tally %>
+    <%= review.rating %>
+    <%= review.description %>
+    <% if review.user == current_user %>
+      <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
+    <% end %>
+    <% if review.user == current_user || current_user.admin? %>
+      <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </li>
   <% end %>
-  <% if @shoe.user == current_user || current_user.admin? %>
-    <%= link_to "Delete Shoe", @shoe, method: :delete %>
-  <% end %>
-  <p><%= link_to "Back To Shoes", shoes_path %></p>
-</div>
+</ul>
+
+<% if @shoe.user == current_user %>
+  <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+<% end %>
+
+<% if @shoe.user == current_user || current_user.admin? %>
+  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+<% end %>
+
+<p><%= link_to "Back To Shoes", shoes_path %></p>

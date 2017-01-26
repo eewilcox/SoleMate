@@ -1,38 +1,48 @@
-
 <h1 class= "text-center">New Shoe Form</h1>
-<div class="row">
+  <div class = "row">
   <%= form_for(@shoe) do |f| %>
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :brand, 'Brand' %><br/>
+      <%= f.text_field :brand %>
+    </div>
+
+   <div class="field">
+      <%= f.label :model %><br/>
+      <%= f.text_field :model %>
+    </div>
+
+   <div class="field">
+      <%= f.label :version %><br/>
+      <%= f.text_field :version %>
+    </div>
+  </div>
     <div class="large-6 columns">
-      <div class="field">
-        <%= f.label :brand, 'Brand' %><br/>
-        <%= f.text_field :brand %>
-        <%= f.label :model %><br/>
-        <%= f.text_field :model %>
-        <%= f.label :version %><br/>
-        <%= f.text_field :version %>
-      </div>
+   <div class="field">
+      <%= f.label :picture %><br/>
+      <%= f.text_field :picture %>
     </div>
-    <div class="large-6 columns">
-      <div class="field">
-        <%= f.label :picture %><br/>
-        <%= f.text_field :picture %>
-        <%= f.label :year %><br/>
-        <%= f.text_field :year %>
-        <%= f.label :price %><br/>
-        <%= f.text_field :price %>
-      </div>
+
+   <div class="field">
+      <%= f.label :year %><br/>
+      <%= f.text_field :year %>
     </div>
-    <div class="large-12 columns">
-      <div class="field">
-        <%= f.label :description %><br/>
-        <%= f.text_area :description %>
-      </div>
+
+   <div class="field">
+      <%= f.label :price %><br/>
+      <%= f.text_field :price %>
     </div>
-    <div class="large-1 columns">
-      <div class="actions">
-        <%= f.submit "Add Shoe"%>
-      </div>
+  </div>
+ <div class="large-12 columns">
+   <div class="field">
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
     </div>
-  <% end %>
+  </div>
+  <div class="links">
+   <div class="actions">
+      <%= f.submit "Add Shoe"%>
+   </div>
+<% end %>
   <p><%= link_to "Back To Shoes", shoes_path %></p>
 </div>

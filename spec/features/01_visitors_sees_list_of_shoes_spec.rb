@@ -11,6 +11,7 @@ feature "visitor sees a list of shoes" do
 
     visit root_path
     click_link 'Sign In'
+  
     fill_in 'Email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Sign In'
@@ -36,6 +37,7 @@ feature "visitor sees a list of shoes" do
     fill_in 'Email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Sign In'
+
     visit shoe_path(shoe)
 
     expect(page).to have_content "Kobe"
