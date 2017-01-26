@@ -38,11 +38,13 @@ feature "authenticated user can update review information" do
     visit shoe_path(shoe)
     click_link 'Update Review'
 
-    fill_in 'Rating', with: 6
+    select 2, from: "Rating"
+    fill_in 'Review', with: "Bad shoe"
+
     click_button 'Update Review'
 
-    expect(page).to have_content "Rating must be between 1 - 5"
-    expect(page).to have_content "Update Review Form"
+
+    expect(page).to have_content "Bad shoe"
 
   end
 

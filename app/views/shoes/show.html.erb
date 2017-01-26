@@ -1,34 +1,60 @@
+
 <h1> <%= @shoe.brand %> <%= @shoe.model %> <%= @shoe.version %> </h1>
-<%= image_tag(@shoe.picture) %>
-<p> <%= @shoe.year%> </p>
-<p> <%= @shoe.price %> </p>
-<p> <%= @shoe.description %> </p>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="pic">
+      <%= image_tag(@shoe.picture) %>
+    </div>
+  </div>
+  <div class="large-6 columns">
+    <p> Made in: <%= @shoe.year%> </p>
+    <p> Price: $<%= @shoe.price %> </p>
+    <p> Description: <%= @shoe.description %> </p>
+  </div>
+</div>
+<div class-"row">
+  <%= form_for [@shoe, @review] do |f| %>
+  <div class="large-2 columns">
+    <%= f.label :rating %>
+    <%= f.select :rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] %>
+  </div>
+    <div class="large-10 columns">
+    <%= f.label :description, "Review" %>
+    <%= f.text_field :description %>
+    </div>
+    <div class="links">
+    <%= f.submit "Add Review"%>
+    <% end %>
+  </div>
+</div>
 
-
-<%= form_for [@shoe, @review] do |f| %>
-<%= f.label :rating %><br/>
-<%= f.text_field :rating %>
-<br/>
-<%= f.label :description, "Review" %><br/>
-<%= f.text_field :description %>
-<br/>
-<%= f.submit "Add Review"%>
-<% end %>
 
 <ul>
   <% @reviews.each do |review| %>
+
   <li>
-    <div class="vote" data-id="<%= review.id %>"></div>
-    <%= review.rating %>
-    <%= review.description %>
-    <% if review.user == current_user %>
-      <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%>
-    <% end %>
-    <% if review.user == current_user || current_user.admin? %>
-      <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
-    <% end %>
-  </li>
-  <% end %>
+    <div class="row review">
+      <div class="large-1 columns box1">
+        <div class="vote" data-id="<%= review.id %>"></div>
+      </div>
+      <div class="large-1 columns box2">
+        <%= review.rating %>
+      </div>
+      <div class="large-8 columns box3 end">
+        <%= review.description %>
+      </div>
+      <div class="large-2 columns box4">
+        <% if review.user == current_user %>
+          <%= link_to "Update Review", edit_shoe_review_path(@shoe, review), params:{review: review.id}%></br>
+        <% end %>
+        <% if review.user == current_user || current_user.admin? %>
+          <%= link_to "Delete", shoe_review_path(@shoe, review), method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
+        <% end %>
+        </div>
+      </li>
+      <% end %>
+    </div>
+  </div>
 </ul>
 
 <% if @shoe.user == current_user %>
@@ -38,5 +64,6 @@
 <% if @shoe.user == current_user || current_user.admin? %>
  <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
 <% end %>
-
-<p><%= link_to "Back To Shoes", root_path %></p>
+<div class="links">
+  <p><%= link_to "Back To Shoes", root_path %></p>
+</div>

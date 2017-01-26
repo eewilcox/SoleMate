@@ -96,3 +96,36 @@ nav a{
 #user_password {
   margin: 0;
 }
+
+.pic{
+  text-align: right;
+}
+
+.box1{
+
+  font-size: 15pt;
+}
+
+.box2{
+  /*background-color: green;*/
+  font-size: 20pt;
+  padding-top: 1em;
+  color: #051594;
+}
+
+.box3{
+  /*background-color: red;*/
+
+}
+
+.box4{
+  /*background-color: yellow;*/
+  padding-top: .75em;
+}
+
+.review{
+  background: #9fb7dd;
+  /*opacity: .2;*/
+  margin-bottom: 15px;
+
+}
