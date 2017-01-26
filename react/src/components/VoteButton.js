@@ -59,7 +59,6 @@ class VoteButton extends Component {
         poll: false
     };
     let jsonStringData = JSON.stringify(data);
-
     fetch(`/api/v1/reviews/${this.props.review}/votes.json`,
       { method: 'post',
         body: jsonStringData,

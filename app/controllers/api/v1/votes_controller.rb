@@ -10,38 +10,58 @@ class Api::V1::VotesController < ApplicationController
     @poll = JSON.parse(request.body.read)["poll"]
     @review = Review.find(params["review_id"].to_i)
     @user = current_user
-    change = 0
     voted = Vote.where({user_id: @user, review_id: @review.id})
     if voted.exists?
-      @vote = voted.first
-      if @vote.poll == @poll
-        @vote.destroy
-        if @poll == true
-          @review.tally -= 1
-        elsif @poll == false
-          @review.tally += 1
-        end
-        @review.save
-        render json: @review.tally
-        return
-      else
-        @vote.poll = @poll
-        change = 1
-      end
+      @review = vote_exists(voted, @poll, @review)
     else
-      @vote = Vote.new
-      @vote.poll = @poll
-      @vote.review = @review
-      @vote.user = @user
-    end
-    @vote.save
-    if @poll == true
-      @review.tally += 1 + change
-    elsif @poll == false
-      @review.tally -= 1 + change
+      @review = new_vote(@user, @poll, @review)
     end
     @review.save
     render json: @review.tally
+  end
+
+  private
+
+  def vote_exists(voted, poll, review)
+    vote = voted.first
+    if vote.poll == poll
+      review = delete_vote(vote, poll, review)
+    else
+      review = change_vote(vote, poll, review)
+    end
+    return review
+  end
+
+  def delete_vote(vote, poll, review)
+    vote.destroy
+    if poll
+      review.tally -= 1
+    else
+      review.tally += 1
+    end
+    return review
+  end
+
+  def change_vote(vote, poll, review)
+    vote.poll = poll
+    vote.save
+    if poll
+      review.tally += 2
+    else
+      review.tally -= 2
+    end
+    return review
+  end
+
+  def new_vote(user, poll, review)
+    vote = Vote.new(review: review, user: user, poll: poll)
+    vote.save
+    if poll
+      review.tally += 1
+    else
+      review.tally -= 1
+    end
+    return review
   end
 
 end
