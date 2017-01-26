@@ -40,7 +40,7 @@ feature "visitors can add shoes" do
     fill_in 'Email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Sign In'
-    
+
     visit new_shoe_path
 
     click_button "Add Shoe"
