@@ -57,7 +57,7 @@ class App extends Component {
 
     return (
       <div>
-      <h3><a href={'/shoes/new'}>Add New Shoe</a></h3>
+      <h3 id="new-shoe-react"><a href={'/shoes/new'}>Add New Shoe</a></h3>
         {shoes}
       </div>
     )
