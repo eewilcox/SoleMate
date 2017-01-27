@@ -12,18 +12,19 @@
     <p> Description: <%= @shoe.description %> </p>
   </div>
 </div>
-<div class-"row">
+<div class="row">
   <%= form_for [@shoe, @review] do |f| %>
   <div class="large-2 columns">
-    <%= f.label :rating %>
+    <%= f.label :rating, :class => "review_heading" %>
     <%= f.select :rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] %>
   </div>
     <div class="large-10 columns">
-    <%= f.label :description, "Review" %>
+    <%= f.label :description, "Review", :class => "review_heading" %>
     <%= f.text_field :description %>
     </div>
-    <div class="links">
-    <%= f.submit "Add Review"%>
+    <div class="links center">
+      <%= f.submit "Add Review", :id => "add_review"%>
+    </div>
     <% end %>
   </div>
 </div>
@@ -37,11 +38,9 @@
       <div class="large-1 columns box1">
         <div class="vote" data-id="<%= review.id %>"></div>
       </div>
-      <div class="large-1 columns box2">
-        <%= review.rating %>
-      </div>
-      <div class="large-8 columns box3 end">
-        <%= review.description %>
+      <div class="large-9 columns box3 end">
+        <p id="rating"> Rating: <%= review.rating %> </p>
+        <p> <%= review.description %> </p>
       </div>
       <div class="large-2 columns box4">
         <% if review.user == current_user %>
@@ -57,13 +56,19 @@
   </div>
 </ul>
 
-<% if @shoe.user == current_user %>
- <p><%= link_to "Update Shoe Information", edit_shoe_path %></p>
-<% end %>
+<div class="row">
+  <% if @shoe.user == current_user %>
+    <div class="links">
+      <p id="links_color"><%= link_to "Update Shoe Information", edit_shoe_path %></p>
+    </div>
+  <% end %>
 
-<% if @shoe.user == current_user || current_user.admin? %>
- <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
-<% end %>
-<div class="links">
-  <p><%= link_to "Back To Shoes", root_path %></p>
+  <% if @shoe.user == current_user || current_user.admin? %>
+    <div class="links">
+      <p><%= link_to "Delete Shoe", @shoe, method: :delete %></p>
+    </div>
+  <% end %>
+  <div class="links">
+    <p><%= link_to "Back To Shoes", root_path %></p>
+  </div>
 </div>
