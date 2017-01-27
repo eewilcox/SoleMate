@@ -37,7 +37,7 @@ h5{
 }
 
 .log{
-  padding-left: 18px;
+  margin-left: 55px;
 }
 img{
   max-width: 200px;
@@ -148,6 +148,14 @@ nav a{
   font-size: 15pt;
 }
 
+
+.box2{
+  font-size: 20pt;
+  padding-top: 1em;
+  color: #051594;
+}
+
+
 .box3{
   padding-top: 1em;
 
@@ -156,14 +164,13 @@ nav a{
   font-size: 20px;
 }
 
+
 .box4{
-  /*background-color: yellow;*/
   padding-top: .75em;
 }
 
 .review{
   background: linear-gradient( white, #dae1ed);
-
   margin-bottom: 15px;
 }
 
@@ -186,5 +193,8 @@ nav img {
   font-size: 3rem;
   background-color: #CDDCDE;
   box-shadow: 5px 5px 2px grey;
+}
 
+.remember{
+  margin-left: 55px;
 }
