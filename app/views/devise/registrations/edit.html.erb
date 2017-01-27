@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :password, :class => "review_heading" %> <i>(leave blank if you don't want to change it)</i>
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Password must be 6 characters minimum" %>  
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Password must be 6 characters minimum" %>
   </div>
 </div>
 
@@ -28,13 +28,8 @@
   </div>
 
   <div class="field">
-<<<<<<< HEAD
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Password must be 6 characters minimum" %>
-=======
     <%= f.label :current_password, :class => "review_heading" %> <i>(we need your current password to confirm your changes)</i>
-    <%= f.password_field :current_password, autocomplete: "off" %>
->>>>>>> master
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Password must be 6 characters minimum" %>
   </div>
 
 <div class="row">
