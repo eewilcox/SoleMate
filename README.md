@@ -10,9 +10,9 @@
 
 Heroku Link: https://solemate.herokuapp.com/
 
-SoleMate is a website that allows users to submit shoes, as well as some detailed information about the shoe. Users can submit a rating and optional text review for any shoe entered in our site's database. The submitter of the shoe will receive an email whenever their shoe is reviewed by someone. Users can also upvote or downvote a review, and the shoe's reviews will be sorted on the page by their vote score.
+SoleMate is a website that allows users to post detailed descriptions of shoes. Users can also submit ratings and reviews for any shoe in our site's database. A user will receive an email whenever another user reviews a shoe they've posted. Users can also upvote or downvote a review, and that shoe's reviews will be sorted on the page by their vote score.
 
-![SoleMate](image.png)
+![SoleMate](img.png)
 
 ## Authors
 * Kate Brown (https://github.com/kb8158)
@@ -33,6 +33,9 @@ SoleMate is a website that allows users to submit shoes, as well as some detaile
 * Ruby on Rails
 * ReactJS
 * PostgreSQL
+* CarrierWave
+* Devise
+* SendGrid
 
 ## Local Setup
 
@@ -41,12 +44,14 @@ git clone https://github.com/eewilcox/SoleMate.git
 cd solemate
 bundle install
 npm install
-rake db:create && rake db:migrate && rake db:rollback && rake db:migrate
+rake db:create && rake db:migrate
 ```
 
 ## To-Do List
 
-* Change colors on upvotes/downvotes based on user’s current review vote status.
+* Change colors on upvotes/downvotes based on user’s current review vote status
+* API integration
+* Expanding CarrierWave to allow users to upload shoe photos
 
 ## Contributing
 
