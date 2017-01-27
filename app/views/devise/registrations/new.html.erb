@@ -23,11 +23,8 @@
       <%= f.email_field :email, autofocus: true %>
 
       <%= f.label :password, 'Password' %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: "Password must be 6 characters minimum" %>
 
-      <%= f.password_field :password, autocomplete: "off" %>
       <%= f.label :password_confirmation, 'Password Confirmation' %>
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
