@@ -14,6 +14,8 @@
       <%= f.text_field :last_name, autofocus: true %>
       <%= f.label :username, 'Username' %>
       <%= f.text_field :username, autofocus: true %>
+      <%= f.label :photo, 'Profile Picture', :class => "review_heading" %>
+      <%= f.file_field :photo, autofocus: true %>
     </div>
   </div>
 
@@ -32,10 +34,10 @@
     <div class="actions">
       <%= f.submit "Sign Up" %>
     </div>
-  </div>
+
 <% end %>
 
-  <div class="links">
+  <div class="log-in">
     <%= render "devise/shared/links" %>
-  </div>
+ </div>
 </div>
