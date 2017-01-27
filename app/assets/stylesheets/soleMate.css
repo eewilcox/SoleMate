@@ -118,6 +118,27 @@ nav a{
   background-color: #D3D3D3;
 }
 
+#search-bar:hover{
+  background: #356094;
+  border: solid 1px #2A4E77;
+  text-decoration: none;
+}
+
+#search-bar{
+  font-family: Impact;
+  width: 20%;
+  border : solid 1px #D3D3D3;
+  border-radius : 10px;
+  opacity: 0.8;
+  font-size : 25px;
+  color: white;
+  padding : 5px 17px;
+  background: #F44D2D;
+  box-shadow: 3px 3px 1px grey;
+  margin-left: 40%;
+
+}
+
 .pic{
   text-align: right;
 }
