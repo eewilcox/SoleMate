@@ -10,63 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124152349) do
+ActiveRecord::Schema.define(version: 2017_01_24_152349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer  "shoe_id",                 null: false
-    t.integer  "rating",                  null: false
-    t.text     "description"
-    t.integer  "tally",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "user_id",                 null: false
-    t.index ["shoe_id"], name: "index_reviews_on_shoe_id", using: :btree
+  create_table "reviews", id: :serial, force: :cascade do |t|
+    t.integer "shoe_id", null: false
+    t.integer "rating", null: false
+    t.text "description"
+    t.integer "tally", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["shoe_id"], name: "index_reviews_on_shoe_id"
   end
 
-  create_table "shoes", force: :cascade do |t|
-    t.string   "model",       null: false
-    t.string   "version",     null: false
-    t.string   "brand",       null: false
-    t.string   "picture",     null: false
-    t.string   "year",        null: false
-    t.decimal  "price",       null: false
-    t.text     "description", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id",     null: false
+  create_table "shoes", id: :serial, force: :cascade do |t|
+    t.string "model", null: false
+    t.string "version", null: false
+    t.string "brand", null: false
+    t.string "picture", null: false
+    t.string "year", null: false
+    t.decimal "price", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name",                             null: false
-    t.string   "last_name",                              null: false
-    t.string   "username",                               null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "username", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false, null: false
-    t.string   "photo"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
+    t.string "photo"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
     t.boolean "poll"
-    t.index ["review_id"], name: "index_votes_on_review_id", using: :btree
-    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+    t.index ["review_id"], name: "index_votes_on_review_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

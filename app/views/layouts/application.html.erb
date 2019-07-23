@@ -18,7 +18,7 @@
         </div>
         <div class="top-bar-right">
            <%= link_to 'Change My User Info', edit_user_registration_path %>
-          <%= image_tag(current_user.photo)%>
+          <%= image_tag(current_user.photo) unless current_user.photo %>
         </div>
         <% if current_user.admin? %>
           <div class="list-of-users">
